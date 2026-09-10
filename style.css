@@ -1,0 +1,226 @@
+/* ==========================================================================
+   RESET & GLOBAL VARIABLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #090e14;
+    --text-white: #ffffff;
+    --text-muted: #94a3b8;
+    --accent-blue: #00a8ff;
+    --tag-blue: #4a90e2;
+    --btn-border: rgba(255, 255, 255, 0.18);
+    --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HERO CONTAINER & BACKGROUND
+   ========================================================================== */
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    /* Set to desktop background image */
+    background-image: url('desktop_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ==========================================================================
+   HEADER / NAVBAR
+   ========================================================================== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Reduced top padding so it sits flush near the top */
+    padding: .23rem 4rem 2.5rem 4rem;
+    z-index: 10;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo-text .dot {
+    color: var(--accent-blue);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-blue);
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-blue);
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
+.hero-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem 4rem 4rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tagline {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    color: var(--tag-blue);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+}
+
+.main-title .highlight {
+    color: var(--accent-blue);
+}
+
+.subtitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 1.2rem;
+}
+
+.description {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 2.2rem;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: var(--text-white);
+}
+
+.btn-primary:hover {
+    background-color: #0093e0;
+    box-shadow: 0 4px 20px rgba(0, 168, 255, 0.35);
+}
+
+.btn-secondary {
+    background-color: rgba(15, 23, 36, 0.5);
+    color: var(--text-white);
+    border: 1px solid var(--btn-border);
+    backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* ==========================================================================
+   SOCIAL LINKS
+   ========================================================================== */
+.social-links {
+    display: flex;
+    gap: 0.9rem;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background-color: rgba(15, 23, 36, 0.4);
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    transform: translateY(-2px);
+}
