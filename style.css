@@ -1,66 +1,66 @@
-/* ==========================================================================
-   RESET & GLOBAL VARIABLES
-   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
 }
 
 :root {
-    --bg-dark: #090e14;
+    --bg-black: #05080c;
     --text-white: #ffffff;
     --text-muted: #94a3b8;
     --accent-blue: #00a8ff;
     --tag-blue: #4a90e2;
     --btn-border: rgba(255, 255, 255, 0.18);
     --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --nav-height: 70px;
 }
 
 html, body {
     width: 100%;
     height: 100%;
-    font-family: var(--font-family);
-    background-color: var(--bg-dark);
+    background-color: var(--bg-black);
     color: var(--text-white);
+    font-family: var(--font-family);
     overflow-x: hidden;
 }
 
 /* ==========================================================================
-   HERO CONTAINER & BACKGROUND
+   1. OUTER CONTAINER (110vh Height managed by explicit CSS Grid rows)
    ========================================================================== */
-.hero {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-dark);
-    /* Set to desktop background image */
-    background-image: url('desktop_bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center right;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.outer-container {
+    width: 100%;
+    min-height: 110vh;
+    background: linear-gradient(180deg, #020406 0%, #080d14 50%, #030508 100%);
+    
+    /* Strict CSS Grid layout prevents collapsing empty elements */
+    display: grid;
+    grid-template-rows: var(--nav-height) 1fr 10vh;
 }
 
 /* ==========================================================================
-   HEADER / NAVBAR
+   2. FIXED TOP NAVBAR
    ========================================================================== */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: var(--nav-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Reduced top padding so it sits flush near the top */
-    padding: .23rem 4rem 2.5rem 4rem;
-    z-index: 10;
+    padding: 0 4rem;
+    background-color: rgba(5, 8, 12, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--btn-border);
+    z-index: 100;
 }
 
 .logo-text {
     font-size: 1.8rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
 }
 
 .logo-text .dot {
@@ -74,53 +74,72 @@ html, body {
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 0.95rem;
+    color: var(--text-white);
+    font-size: 1rem;
     font-weight: 500;
-    position: relative;
     padding-bottom: 4px;
-    transition: color 0.3s ease;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--accent-blue);
-}
-
-.nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent-blue);
-    border-radius: 2px;
+    border-bottom: 3px solid var(--accent-blue);
 }
 
 /* ==========================================================================
-   MAIN CONTENT AREA
+   3. ABSOLUTE-SIZED NAVBAR SPACER CONTAINER
    ========================================================================== */
-.hero-container {
+.navbar-spacer {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 4rem 4rem 4rem;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
+    height: var(--nav-height); /* Explicit height */
+    min-height: var(--nav-height); /* Prevents flex/grid shrinkage */
+    display: block;
 }
 
+/* ==========================================================================
+   4. MAIN HERO CONTENT CONTAINER (Fills the middle grid row cleanly)
+   ========================================================================== */
+.content-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+}
+
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+}
+
+/* ==========================================================================
+   5. FOREGROUND CONTENT
+   ========================================================================== */
 .hero-content {
-    max-width: 540px;
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .tagline {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 2.2px;
     color: var(--tag-blue);
@@ -140,10 +159,47 @@ html, body {
 }
 
 .subtitle {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 600;
     color: var(--text-white);
     margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.typing-text {
+    color: var(--accent-blue);
+    position: relative;
+}
+
+.typing-text::before {
+    content: "Software Engineer";
+    animation: words 20s infinite;
+}
+
+.typing-text::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--accent-blue);
+    animation: cursor 0.6s infinite;
+}
+
+@keyframes cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes words {
+    0%, 20% { content: "Software Developer"; }
+    21%, 40% { content: "Game Developer"; }
+    41%, 60% { content: "Web Developer"; }
+    61%, 80% { content: "IT Specialist"; }
+    81%, 100% { content: "Software Engineer"; }
 }
 
 .description {
@@ -153,9 +209,6 @@ html, body {
     margin-bottom: 2.2rem;
 }
 
-/* ==========================================================================
-   BUTTONS
-   ========================================================================== */
 .cta-buttons {
     display: flex;
     gap: 1rem;
@@ -170,18 +223,21 @@ html, body {
     font-size: 0.9rem;
     font-weight: 600;
     border-radius: 8px;
-    text-decoration: none;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .btn-primary {
     background-color: var(--accent-blue);
     color: var(--text-white);
+    border: 2px solid var(--accent-blue);
 }
 
 .btn-primary:hover {
-    background-color: #0093e0;
-    box-shadow: 0 4px 20px rgba(0, 168, 255, 0.35);
+    transform: scale(1.03);
+    background-color: transparent;
+    color: var(--accent-blue);
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.4);
 }
 
 .btn-secondary {
@@ -192,13 +248,12 @@ html, body {
 }
 
 .btn-secondary:hover {
+    transform: scale(1.03);
     border-color: var(--accent-blue);
     color: var(--accent-blue);
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.2);
 }
 
-/* ==========================================================================
-   SOCIAL LINKS
-   ========================================================================== */
 .social-links {
     display: flex;
     gap: 0.9rem;
@@ -214,7 +269,6 @@ html, body {
     border: 1px solid var(--btn-border);
     background-color: rgba(15, 23, 36, 0.4);
     color: var(--text-white);
-    text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.3s ease;
 }
@@ -222,5 +276,41 @@ html, body {
 .social-links a:hover {
     border-color: var(--accent-blue);
     color: var(--accent-blue);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 168, 255, 0.3);
+}
+
+/* ==========================================================================
+   6. PSEUDO FOOTER CONTAINER (Occupies Grid Row 3: 10vh)
+   ========================================================================== */
+.footer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(3, 5, 8, 0.85);
+    border-top: 1px solid var(--btn-border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+@media (max-width: 995px) {
+    .navbar {
+        padding: 0 2rem;
+    }
+
+    .content-container {
+        padding: 0 2rem;
+    }
+
+    .main-title {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.4rem;
+    }
 }
