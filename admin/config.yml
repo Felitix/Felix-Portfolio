@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: Felitix/Felix-Portfolio          #YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME
+  branch: main # or master
+
+# Path where uploaded project/blog images will be stored in your repo
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  # --------------------------------------------------------------------------
+  # 1. PROJECTS COLLECTION
+  # --------------------------------------------------------------------------
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Project Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Tech Stack (Comma Separated)", name: "tech_stack", widget: "list" }
+      - { label: "GitHub Repo URL", name: "github_url", widget: "string", required: false }
+      - { label: "Live Demo URL", name: "live_url", widget: "string", required: false }
+      - { label: "Related Devlog/Blog Slug", name: "devlog_slug", widget: "string", required: false }
+
+  # --------------------------------------------------------------------------
+  # 2. BLOG COLLECTION
+  # --------------------------------------------------------------------------
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    fields:
+      - { label: "Post Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Read Time (e.g., 5 min read)", name: "read_time", widget: "string" }
+      - { label: "Category Tag", name: "category", widget: "string" }
+      - { label: "Short Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Full Article Content", name: "content", widget: "markdown" }

@@ -3,74 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Felix | Software Engineer</title>
+    <title>Felix Jonathan | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+<script src="app.js" defer></script>
 <body>
 
-    <!-- Outer Container (110vh Total Height using CSS Grid) -->
+    <!-- Outer Container -->
     <div class="outer-container">
 
-        <!-- 1. The Fixed Top Navbar (Visually pinned to viewport top) -->
+        <!-- Navigation Bar -->
         <nav class="navbar">
             <div class="logo">
-                <span class="logo-text">Felix<span class="dot">.</span></span>
+                <a href="#home" class="logo-text">Felix<span class="dot">.</span></a>
             </div>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars open-icon"></i>
+                <i class="fa-solid fa-xmark close-icon"></i>
+            </label>
+
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
 
-        <!-- 2. Rigid Top Spacer (Occupies Row 1 in Grid: Exactly 70px) -->
         <div class="navbar-spacer"></div>
 
-        <!-- 3. Main Hero Content (Occupies Row 2 in Grid: Fills remaining height) -->
-        <div class="content-container">
-            <div class="image-container">
-                <img src="desktop_bg.jpg" alt="Background Image">
-            </div>
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
 
-            <div class="hero-content">
-                <span class="tagline">SOFTWARE ENGINEERING STUDENT</span>
-                <h1 class="main-title">
-                    Hi, I'm <span class="highlight">Felix Jonathan</span>
-                </h1>
-                <h2 class="subtitle">
-                    Aspiring <span class="typing-text"></span>
-                </h2>
-                <p class="description">
-                    I build, learn and improve — turning ideas into functional solutions. Currently studying Software Engineering, exploring game development and web technologies.
-                </p>
-
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fa-solid fa-code"></i> View My Projects
-                    </a>
-                    <a href="#about" class="btn btn-secondary">
-                        <i class="fa-regular fa-user"></i> About Me
-                    </a>
+            <!-- 1. HOME SECTION -->
+            <section id="home" class="section hero-section">
+                <div class="image-container">
+                    <img src="desktop_bg.jpg" alt="Background Image">
                 </div>
 
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank" aria-label="GitHub">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:example@email.com" aria-label="Email">
-                        <i class="fa-regular fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+                <div class="hero-content">
+                    <span class="tagline">Software Engineering Student</span>
+                    <h1 class="main-title">
+                        Hi, I'm <span class="highlight">Felix Jonathan</span>
+                    </h1>
+                    <h2 class="subtitle">
+                        Building as a <span class="typing-text"></span>
+                    </h2>
+                    <p class="description">
+                        I design, build, and optimize software—turning complex ideas into scalable functional solutions. Currently deepening my expertise in modern web technologies and real-time interactive systems.
+                    </p>
 
-        <!-- 4. Pseudo Footer Container (Occupies Row 3 in Grid: Exactly 10vh) -->
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fa-solid fa-code"></i> View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fa-regular fa-envelope"></i> Get in Touch
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="mailto:example@email.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. PROJECTS SECTION -->
+            <section id="projects" class="section container-section">
+                <div class="section-header">
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-desc">A selection of tools, web apps, and interactive systems I've built.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project Card 1 -->
+                    <article class="project-card">
+                        <div class="card-image">
+                            <img src="project1.jpg" alt="Project Thumbnail">
+                            <div class="card-overlay">
+                                <a href="#blog-post-1" class="devlog-badge"><i class="fa-solid fa-book-open"></i> Read Devlog</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="tech-tags">
+                                <span class="tag">C#</span>
+                                <span class="tag">Unity</span>
+                                <span class="tag">Shaders</span>
+                            </div>
+                            <h3 class="card-title">Real-Time Terrain Tool</h3>
+                            <p class="card-text">Custom terrain deformation system featuring low-poly mesh modification and dynamic runtime craters.</p>
+                            <div class="card-links">
+                                <a href="#" target="_blank" class="card-link"><i class="fa-brands fa-github"></i> Source</a>
+                                <a href="#" target="_blank" class="card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project Card 2 -->
+                    <article class="project-card">
+                        <div class="card-image">
+                            <img src="project2.jpg" alt="Project Thumbnail">
+                            <div class="card-overlay">
+                                <a href="#blog-post-2" class="devlog-badge"><i class="fa-solid fa-book-open"></i> Read Devlog</a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="tech-tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <h3 class="card-title">Developer Workspace Dashboard</h3>
+                            <p class="card-text">Lightweight productivity hub for managing active development tasks, snippets, and quick system links.</p>
+                            <div class="card-links">
+                                <a href="#" target="_blank" class="card-link"><i class="fa-brands fa-github"></i> Source</a>
+                                <a href="#" target="_blank" class="card-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live App</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 3. BLOG SECTION -->
+            <section id="blog" class="section container-section">
+                <div class="section-header">
+                    <span class="section-tag">Articles & Devlogs</span>
+                    <h2 class="section-title">Technical Writing</h2>
+                    <p class="section-desc">Deep dives into technical problems, architecture decisions, and project build breakdowns.</p>
+                </div>
+
+                <div class="blog-grid">
+                    <!-- Blog Card 1 -->
+                    <article class="blog-card" id="blog-post-1">
+                        <div class="blog-meta">
+                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> Aug 2026</span>
+                            <span class="meta-item"><i class="fa-regular fa-clock"></i> 5 min read</span>
+                            <span class="meta-tag">GameDev</span>
+                        </div>
+                        <h3 class="blog-title">Deforming Low-Poly Meshes in Real-Time</h3>
+                        <p class="blog-excerpt">Exploring vector displacement math and mesh vertex modification in C# to create performance-friendly terrain blast craters.</p>
+                        <a href="#" class="read-more-btn">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+
+                    <!-- Blog Card 2 -->
+                    <article class="blog-card" id="blog-post-2">
+                        <div class="blog-meta">
+                            <span class="meta-item"><i class="fa-regular fa-calendar"></i> Jul 2026</span>
+                            <span class="meta-item"><i class="fa-regular fa-clock"></i> 4 min read</span>
+                            <span class="meta-tag">WebDev</span>
+                        </div>
+                        <h3 class="blog-title">Structuring Responsive CSS Layouts Without Framework Clutter</h3>
+                        <p class="blog-excerpt">Why explicit grid rows and clean flexbox hierarchies eliminate common layout shifting issues on fixed viewports.</p>
+                        <a href="#" class="read-more-btn">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 4. SKILLS SECTION -->
+            <section id="skills" class="section container-section">
+                <div class="section-header">
+                    <span class="section-tag">Proficiency</span>
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-desc">Technologies, languages, and tools I use to bring ideas to life.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fa-solid fa-code"></i> Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-badge">C#</span>
+                            <span class="skill-badge">JavaScript (ES6+)</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fa-solid fa-layer-group"></i> Frameworks & Tools</h3>
+                        <div class="skill-list">
+                            <span class="skill-badge">Unity 3D</span>
+                            <span class="skill-badge">Git & GitHub</span>
+                            <span class="skill-badge">VS Code</span>
+                            <span class="skill-badge">Visual Studio</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fa-solid fa-cubes"></i> Specialist Areas</h3>
+                        <div class="skill-list">
+                            <span class="skill-badge">Shader Graph</span>
+                            <span class="skill-badge">VFX Graph</span>
+                            <span class="skill-badge">Responsive Web Design</span>
+                            <span class="skill-badge">OOP & System Architecture</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. CONTACT SECTION -->
+            <section id="contact" class="section container-section">
+                <div class="section-header">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-desc">Have a question, project idea, or opportunity? Send me a message!</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <i class="fa-regular fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>felix@example.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Software Engineering Student</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <i class="fa-solid fa-user-check"></i>
+                            <div>
+                                <h4>Status</h4>
+                                <p>Available for internships & projects</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-btn">
+                            <i class="fa-regular fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Container -->
         <footer class="footer-container">
             <p>&copy; 2026 Felix Jonathan. Designed & Built with Precision.</p>
         </footer>
