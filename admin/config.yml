@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: Felitix/Felix-Portfolio          #YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME
-  branch: main # or master
+  name: git-gateway
+  branch: main
 
 # Path where uploaded project/blog images will be stored in your repo
 media_folder: "uploads"
