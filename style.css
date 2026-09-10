@@ -166,6 +166,7 @@ html, body {
     height: 100%;
     z-index: 1;
     overflow: hidden;
+    background-color: #04070c;
 }
 
 .image-container img {
@@ -293,7 +294,7 @@ html, body {
     position: relative;
     width: 100%;
     height: 200px;
-    background-color: #101725;
+    background-color: #0b111c;
 }
 
 .card-image img {
