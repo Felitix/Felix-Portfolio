@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "title": "Real-Time Terrain Tool",
+      "order": 1,
+      "published": true,
+      "thumbnail": "./project1.jpg",
+      "description": "Custom terrain deformation system featuring low-poly mesh modification and dynamic runtime craters.",
+      "tech_stack": ["C#", "Unity", "Shaders"],
+      "github_url": "https://github.com",
+      "live_url": "https://example.com",
+      "devlog_slug": "real-time-terrain"
+    },
+    {
+      "title": "Developer Workspace Dashboard",
+      "order": 2,
+      "published": true,
+      "thumbnail": "./project2.jpg",
+      "description": "Lightweight productivity hub for managing active development tasks, snippets, and quick system links.",
+      "tech_stack": ["HTML5", "CSS3", "JavaScript"],
+      "github_url": "https://github.com",
+      "live_url": "https://example.com"
+    }
+  ]
+}
