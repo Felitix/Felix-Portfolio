@@ -7,107 +7,95 @@ public_folder: '/uploads'
 
 collections:
   # --------------------------------------------------------------------------
-  # 1. PROJECTS COLLECTION (Single JSON File with Ordering & Toggles)
+  # 1. PROJECTS COLLECTION (Individual Files inside content/projects/)
   # --------------------------------------------------------------------------
-  - name: 'projects_collection'
-    label: 'Projects Manager'
-    files:
-      - file: 'content/projects.json'
-        label: 'All Projects'
-        name: 'projects_list'
-        fields:
-          - name: 'items'
-            label: 'Projects List'
-            widget: 'list'
-            allow_add: true
-            summary: '{{fields.title}} (Order: {{fields.order}})'
-            fields:
-              - { label: 'Project Title', name: 'title', widget: 'string' }
-              - {
-                  label: 'Display Order / Priority',
-                  name: 'order',
-                  widget: 'number',
-                  default: 1,
-                }
-              - {
-                  label: 'Published / Visible',
-                  name: 'published',
-                  widget: 'boolean',
-                  default: true,
-                }
-              - {
-                  label: 'Project Thumbnail',
-                  name: 'thumbnail',
-                  widget: 'image',
-                }
-              - {
-                  label: 'Short Description',
-                  name: 'description',
-                  widget: 'text',
-                }
-              - {
-                  label: 'Tech Stack (Comma Separated)',
-                  name: 'tech_stack',
-                  widget: 'list',
-                }
-              - {
-                  label: 'GitHub Repo URL',
-                  name: 'github_url',
-                  widget: 'string',
-                  required: false,
-                }
-              - {
-                  label: 'Live Demo URL',
-                  name: 'live_url',
-                  widget: 'string',
-                  required: false,
-                }
-              - {
-                  label: 'Related Devlog/Blog Slug',
-                  name: 'devlog_slug',
-                  widget: 'string',
-                  required: false,
-                }
+  - name: 'projects'
+    label: 'Projects'
+    folder: 'content/projects'
+    create: true
+    slug: '{{slug}}'
+    format: 'json'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Display Order / Priority',
+          name: 'order',
+          widget: 'number',
+          default: 1,
+        }
+      - {
+          label: 'Published / Visible',
+          name: 'published',
+          widget: 'boolean',
+          default: true,
+        }
+      - { label: 'Project Thumbnail', name: 'thumbnail', widget: 'image' }
+      - { label: 'Short Description', name: 'description', widget: 'text' }
+      - {
+          label: 'Tech Stack (Comma Separated)',
+          name: 'tech_stack',
+          widget: 'list',
+        }
+      - {
+          label: 'GitHub Repo URL',
+          name: 'github_url',
+          widget: 'string',
+          required: false,
+        }
+      - {
+          label: 'Live Demo URL',
+          name: 'live_url',
+          widget: 'string',
+          required: false,
+        }
+      - {
+          label: 'Related Devlog/Blog Slug',
+          name: 'devlog_slug',
+          widget: 'string',
+          required: false,
+        }
 
   # --------------------------------------------------------------------------
-  # 2. BLOG COLLECTION (Single JSON File with Ordering & Toggles)
+  # 2. BLOG COLLECTION (Individual Files inside content/blog/)
   # --------------------------------------------------------------------------
-  - name: 'blog_collection'
-    label: 'Blog Posts Manager'
-    files:
-      - file: 'content/blog.json'
-        label: 'All Blog Posts'
-        name: 'blog_list'
-        fields:
-          - name: 'items'
-            label: 'Blog Posts List'
-            widget: 'list'
-            allow_add: true
-            summary: '{{fields.title}}'
-            fields:
-              - { label: 'Post Title', name: 'title', widget: 'string' }
-              - {
-                  label: 'Display Order / Priority',
-                  name: 'order',
-                  widget: 'number',
-                  default: 1,
-                }
-              - {
-                  label: 'Published / Visible',
-                  name: 'published',
-                  widget: 'boolean',
-                  default: true,
-                }
-              - { label: 'Publish Date', name: 'date', widget: 'string' }
-              - {
-                  label: 'Read Time (e.g., 5 min read)',
-                  name: 'read_time',
-                  widget: 'string',
-                }
-              - { label: 'Category Tag', name: 'category', widget: 'string' }
-              - { label: 'Short Excerpt', name: 'excerpt', widget: 'text' }
-              - {
-                  label: 'Full Article Content',
-                  name: 'content',
-                  widget: 'markdown',
-                }
+  - name: 'blog'
+    label: 'Blog Posts'
+    folder: 'content/blog'
+    create: true
+    slug: '{{slug}}'
+    format: 'json'
+    fields:
+      - { label: 'Post Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Publish Date',
+          name: 'date',
+          widget: 'datetime',
+          format: 'YYYY-MM-DD',
+          default: '',
+        }
+      - {
+          label: 'Display Order / Priority',
+          name: 'order',
+          widget: 'number',
+          default: 1,
+        }
+      - {
+          label: 'Published / Visible',
+          name: 'published',
+          widget: 'boolean',
+          default: true,
+        }
+      - {
+          label: 'Read Time (e.g., 5 min read)',
+          name: 'read_time',
+          widget: 'string',
+          default: '3 min read',
+        }
+      - {
+          label: 'Category Tag',
+          name: 'category',
+          widget: 'string',
+          default: 'General',
+        }
+      - { label: 'Short Excerpt', name: 'excerpt', widget: 'text' }
+      - { label: 'Full Article Content', name: 'content', widget: 'markdown' }
