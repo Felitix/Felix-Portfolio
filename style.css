@@ -157,7 +157,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* Hero Section - Desktop Background Default */
+/* Hero Section */
 .hero-section {
   position: relative;
   min-height: calc(100vh - var(--nav-height));
@@ -278,7 +278,7 @@ body {
   color: var(--accent-blue);
 }
 
-/* Grid Layouts */
+/* Grids & Cards Setup */
 .projects-grid,
 .blog-grid,
 .skills-grid {
@@ -294,31 +294,233 @@ body {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 1.5rem;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+.project-card:hover,
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 168, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   PROJECT CARDS STYLING
+   ========================================================================== */
 .project-card {
   padding: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-image {
   position: relative;
   width: 100%;
-  height: 180px;
+  height: 200px;
+  overflow: hidden;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 12, 0.65);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-image:hover .card-overlay {
+  opacity: 1;
+}
+
+.devlog-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--accent-blue);
+  color: var(--text-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 168, 255, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.devlog-badge:hover {
+  transform: scale(1.05);
 }
 
 .card-content {
-  padding: 1.25rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-/* Contact Section */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  background-color: rgba(74, 144, 226, 0.15);
+  color: var(--tag-blue);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 4px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.6rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.card-links {
+  display: flex;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.card-link:hover {
+  color: var(--accent-blue);
+}
+
+/* ==========================================================================
+   BLOG CARDS STYLING
+   ========================================================================== */
+.blog-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.meta-tag {
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.blog-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.6rem;
+  line-height: 1.35;
+}
+
+.blog-excerpt {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  transition: gap 0.2s ease;
+}
+
+.read-more-btn:hover {
+  gap: 0.7rem;
+}
+
+/* ==========================================================================
+   SKILLS & CONTACT STYLING
+   ========================================================================== */
+.skill-category {
+  padding: 1.5rem;
+}
+
+.skill-category h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-blue);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-badge {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--btn-border);
+  border-radius: 6px;
+  color: var(--text-white);
+}
+
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -329,6 +531,29 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.info-card {
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-card i {
+  font-size: 1.5rem;
+  color: var(--accent-blue);
+}
+
+.info-card h4 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.info-card p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-white);
 }
 
 .contact-form {
@@ -346,9 +571,14 @@ body {
   border-radius: 8px;
   color: var(--text-white);
   font-size: 0.95rem;
+  font-family: inherit;
 }
 
-/* Footer */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-blue);
+}
+
 .footer-container {
   padding: 2rem 1rem;
   text-align: center;
@@ -358,11 +588,8 @@ body {
   font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   MOBILE & TABLET RESPONSIVE OVERRIDES
-   ========================================================================== */
+/* Mobile & Responsive Overrides */
 @media (max-width: 868px) {
-  /* Swaps hero background image strictly for mobile viewports */
   .hero-section {
     background-image: url('./mobilesize.jpg');
     background-position: center center;
