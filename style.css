@@ -335,6 +335,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Card Overlay Base (Desktop: Hover to reveal) */
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -345,6 +346,29 @@ body {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.card-image:hover .card-overlay {
+  opacity: 1;
+}
+
+/* Mobile & Touch Overrides: Keep overlay and devlog button permanently visible */
+@media (max-width: 868px), (hover: none) {
+  .card-overlay {
+    opacity: 1;
+    background: rgba(
+      5,
+      8,
+      12,
+      0.45
+    ); /* Soft background contrast for mobile preview */
+  }
+
+  .devlog-badge {
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+  }
 }
 
 .card-image:hover .card-overlay {
